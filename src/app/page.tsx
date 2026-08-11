@@ -10,6 +10,8 @@ import Internship from "@/components/Internship";
 import Projects from "@/components/Projects";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
+import Background from "@/components/Background";
+import ScrollProgress from "@/components/ScrollProgress";
 
 function Footer() {
   return (
@@ -48,8 +50,10 @@ function ScrollToTop() {
 export default function Home() {
   return (
     <>
-      {/* Animated background mesh */}
-      <div className="bg-mesh" aria-hidden="true" />
+      {/* Animated particle background */}
+      <Background />
+      {/* Scroll progress bar */}
+      <ScrollProgress />
 
       <Navbar />
 
