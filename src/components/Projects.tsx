@@ -1,38 +1,210 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { projects, Project } from "@/data/projects";
+import ProjectModal from "@/components/ProjectModal";
 
-function GithubIcon({ size = 14 }: { size?: number }) {
+// ── Play icon overlay ────────────────────────────────────────────
+function PlayOverlay() {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-    </svg>
+    <div
+      style={{
+        position: "absolute",
+        inset: 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "rgba(0,0,0,0.35)",
+        opacity: 0,
+        transition: "opacity 0.25s ease",
+      }}
+      className="play-overlay"
+    >
+      <div
+        style={{
+          width: "52px",
+          height: "52px",
+          borderRadius: "50%",
+          background: "rgba(255,255,255,0.15)",
+          border: "2px solid rgba(255,255,255,0.5)",
+          backdropFilter: "blur(8px)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {/* Triangle play icon */}
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+          <polygon points="5,3 19,12 5,21" />
+        </svg>
+      </div>
+    </div>
   );
 }
-import { useLanguage } from "@/context/LanguageContext";
-import { projects } from "@/data/projects";
 
-export default function Projects() {
-  const { t, language } = useLanguage();
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+// ── Thumbnail (card top) ─────────────────────────────────────────
+function CardThumbnail({ project, title }: { project: Project; title: string }) {
+  if (project.video || project.thumbnail) {
+    return (
+      <>
+        {project.thumbnail ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={project.thumbnail}
+            alt={title}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+        ) : (
+          // Video — show first frame (muted, paused)
+          <video
+            src={project.video}
+            muted
+            playsInline
+            preload="metadata"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        )}
+        <PlayOverlay />
+      </>
+    );
+  }
+
+  // Gradient placeholder with subtle grid pattern
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        background:
+          "linear-gradient(135deg, var(--surface-2) 0%, var(--bg) 100%)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "10px",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Subtle dot grid */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage:
+            "radial-gradient(circle, rgba(203,205,206,0.07) 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
+        }}
+      />
+      <span style={{ fontSize: "2.2rem", position: "relative", zIndex: 1 }}>
+        🖥️
+      </span>
+      <span
+        style={{
+          fontSize: "0.7rem",
+          color: "var(--text-dim)",
+          position: "relative",
+          zIndex: 1,
+          fontFamily: "var(--font-body)",
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+        }}
+      >
+        Click for details
+      </span>
+      <PlayOverlay />
+    </div>
+  );
+}
+
+// ── Project card ─────────────────────────────────────────────────
+function ProjectCard({
+  project,
+  index,
+  inView,
+  onClick,
+}: {
+  project: Project;
+  index: number;
+  inView: boolean;
+  onClick: () => void;
+}) {
+  const { language } = useLanguage();
+  const title =
+    language === "tr" ? project.title.tr : project.title.en;
+  const description =
+    language === "tr" ? project.description.tr : project.description.en;
 
   return (
-    <section id="projects" className="section projects-section" ref={ref}>
-      <div className="container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="section-tag">{t.projects.subtitle}</div>
-          <h2 className="section-title">{t.projects.title}</h2>
-        </motion.div>
+    <motion.div
+      className="project-card-new"
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.1 * index }}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      aria-label={`Open ${title}`}
+      onKeyDown={(e) => e.key === "Enter" && onClick()}
+    >
+      {/* Thumbnail */}
+      <div className="project-card-thumbnail">
+        <CardThumbnail project={project} title={title} />
+        {project.featured && (
+          <span className="project-featured-pill">⭐ Featured</span>
+        )}
+      </div>
 
-        <div className="projects-grid">
+      {/* Info */}
+      <div className="project-card-body">
+        <h3 className="project-card-title">{title}</h3>
+        <p className="project-card-desc">{description}</p>
+        <div className="project-tech">
+          {project.technologies.slice(0, 4).map((tech) => (
+            <span key={tech} className="project-tech-tag">
+              {tech}
+            </span>
+          ))}
+          {project.technologies.length > 4 && (
+            <span className="project-tech-tag">
+              +{project.technologies.length - 4}
+            </span>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+// ── Section ───────────────────────────────────────────────────────
+export default function Projects() {
+  const { t } = useLanguage();
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [selected, setSelected] = useState<Project | null>(null);
+
+  return (
+    <>
+      <section id="projects" className="section projects-section" ref={ref}>
+        <div className="container">
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="section-tag">{t.projects.subtitle}</div>
+            <h2 className="section-title">{t.projects.title}</h2>
+          </motion.div>
+
           {projects.length === 0 ? (
             <motion.div
               className="coming-soon-card"
@@ -45,62 +217,23 @@ export default function Projects() {
               <p className="coming-soon-desc">{t.projects.coming_soon_desc}</p>
             </motion.div>
           ) : (
-            projects.map((project, i) => (
-              <motion.div
-                key={project.id}
-                className={`project-card${project.featured ? " featured" : ""}`}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 * i }}
-                whileHover={{ y: -6 }}
-              >
-                {project.featured && (
-                  <span className="project-featured-badge">⭐ Featured</span>
-                )}
-                <h3 className="project-title">
-                  {language === "tr" ? project.title.tr : project.title.en}
-                </h3>
-                <p className="project-description">
-                  {language === "tr"
-                    ? project.description.tr
-                    : project.description.en}
-                </p>
-                <div className="project-tech">
-                  {project.technologies.map((tech) => (
-                    <span key={tech} className="project-tech-tag">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                <div className="project-links">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-link"
-                    >
-                      <GithubIcon size={14} />
-                      {t.projects.github}
-                    </a>
-                  )}
-                  {project.demo && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-link"
-                    >
-                      <ExternalLink size={14} />
-                      {t.projects.demo}
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            ))
+            <div className="projects-grid-new">
+              {projects.map((project, i) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  index={i}
+                  inView={inView}
+                  onClick={() => setSelected(project)}
+                />
+              ))}
+            </div>
           )}
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Modal */}
+      <ProjectModal project={selected} onClose={() => setSelected(null)} />
+    </>
   );
 }
