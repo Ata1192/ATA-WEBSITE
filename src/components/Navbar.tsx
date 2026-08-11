@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import Magnetic from "@/components/Magnetic";
 
 export default function Navbar() {
   const { t, language, setLanguage } = useLanguage();
@@ -33,16 +34,20 @@ export default function Navbar() {
     <>
       <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
         <div className="container navbar-inner">
-          <button className="navbar-logo" onClick={() => scrollTo("hero")}>
-            AM
-          </button>
+          <Magnetic amount={0.15}>
+            <button className="navbar-logo" onClick={() => scrollTo("hero")}>
+              AM
+            </button>
+          </Magnetic>
 
           <ul className="navbar-links">
             {links.map((l) => (
               <li key={l.id}>
-                <button className="navbar-link" onClick={() => scrollTo(l.id)}>
-                  {l.label}
-                </button>
+                <Magnetic amount={0.2}>
+                  <button className="navbar-link" onClick={() => scrollTo(l.id)}>
+                    {l.label}
+                  </button>
+                </Magnetic>
               </li>
             ))}
           </ul>

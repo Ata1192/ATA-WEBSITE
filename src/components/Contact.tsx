@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Copy, Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import Magnetic from "@/components/Magnetic";
 
 const EMAIL = "atamtn@hotmail.com";
 const GITHUB = "https://github.com/Ata1192";
@@ -132,26 +133,30 @@ export default function Contact() {
             {t.contact.find_me}
           </p>
           <div className="contact-socials">
-            <a
-              id="github-link"
-              href={GITHUB}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <GithubIcon size={18} />
-              GitHub
-            </a>
-            <a
-              id="linkedin-link"
-              href={LINKEDIN}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              <LinkedinIcon size={18} />
-              LinkedIn
-            </a>
+            <Magnetic amount={0.2}>
+              <a
+                id="github-link"
+                href={GITHUB}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                <GithubIcon size={18} />
+                GitHub
+              </a>
+            </Magnetic>
+            <Magnetic amount={0.2}>
+              <a
+                id="linkedin-link"
+                href={LINKEDIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+              >
+                <LinkedinIcon size={18} />
+                LinkedIn
+              </a>
+            </Magnetic>
           </div>
         </motion.div>
       </div>

@@ -155,7 +155,8 @@ export default function Hero() {
           </motion.p>
 
           <motion.h1
-            className="hero-name"
+            className="hero-name glitch-hover"
+            data-text={t.hero.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}

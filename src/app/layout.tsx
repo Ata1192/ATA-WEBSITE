@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   },
 };
 
+import SmoothScroll from "@/components/SmoothScroll";
+import CustomCursor from "@/components/CustomCursor";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -46,7 +49,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <LanguageProvider>{children}</LanguageProvider>
+        <CustomCursor />
+        <SmoothScroll>
+          <LanguageProvider>{children}</LanguageProvider>
+        </SmoothScroll>
       </body>
     </html>
   );

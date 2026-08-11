@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import GitHubStats from "@/components/GitHubStats";
+import RevealText from "@/components/RevealText";
 
 export default function About() {
   const { t } = useLanguage();
@@ -37,9 +38,9 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <div className="about-text">
-              <p>{t.about.p1}</p>
-              <p>{t.about.p2}</p>
-              <p>{t.about.p3}</p>
+              <RevealText text={t.about.p1} delay={0.2} as="p" />
+              <RevealText text={t.about.p2} delay={0.4} as="p" />
+              <RevealText text={t.about.p3} delay={0.6} as="p" />
             </div>
             {/* GitHub canlı istatistikleri */}
             <GitHubStats inView={inView} />
