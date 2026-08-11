@@ -703,7 +703,9 @@ h5 {
    SKILLS
    ============================================ */
 .skills-section {
-  background: var(--bg-2);
+  background-color: var(--bg-2);
+  background-image: radial-gradient(circle, rgba(203, 205, 206, 0.04) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
 }
 
 .skills-category {
@@ -921,7 +923,9 @@ h5 {
    PROJECTS — Thumbnail Card Layout
    ============================================ */
 .projects-section {
-  background: var(--bg-2);
+  background-color: var(--bg-2);
+  background-image: radial-gradient(circle, rgba(203, 205, 206, 0.04) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
 }
 
 /* New grid */
@@ -1130,7 +1134,9 @@ h5 {
    CONTACT
    ============================================ */
 .contact-section {
-  background: var(--bg-2);
+  background-color: var(--bg-2);
+  background-image: radial-gradient(circle, rgba(203, 205, 206, 0.04) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
 }
 
 .contact-inner {
