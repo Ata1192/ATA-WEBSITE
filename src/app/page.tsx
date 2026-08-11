@@ -43,7 +43,7 @@ function ScrollToTop() {
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Scroll to top"
     >
-      <ChevronUp size={20} color="white" />
+      <ChevronUp size={20} color="#000000" />
     </button>
   );
 }
