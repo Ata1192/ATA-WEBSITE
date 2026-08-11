@@ -12,6 +12,7 @@ import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Background from "@/components/Background";
 import ScrollProgress from "@/components/ScrollProgress";
+import LoadingScreen from "@/components/LoadingScreen";
 
 function Footer() {
   return (
@@ -50,6 +51,8 @@ function ScrollToTop() {
 export default function Home() {
   return (
     <>
+      {/* Loading screen — sadece ilk ziyarette görünür */}
+      <LoadingScreen />
       {/* Animated particle background */}
       <Background />
       {/* Scroll progress bar */}

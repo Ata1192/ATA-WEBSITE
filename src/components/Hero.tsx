@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Sparkles } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import TypeWriter from "@/components/TypeWriter";
 
 function AvatarSVG() {
   return (
@@ -110,7 +111,7 @@ function AvatarSVG() {
 }
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollToAbout = () => {
@@ -161,6 +162,30 @@ export default function Hero() {
           >
             {t.hero.title}
           </motion.h1>
+
+          <motion.div
+            style={{ marginBottom: "8px" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <span
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontSize: "1.15rem",
+                fontWeight: 500,
+                color: "var(--primary)",
+              }}
+            >
+              <TypeWriter
+                words={
+                  language === "tr"
+                    ? [".NET Developer", "React Developer", "Full Stack Developer", "Software Engineer"]
+                    : [".NET Developer", "React Developer", "Full Stack Developer", "Software Engineer"]
+                }
+              />
+            </span>
+          </motion.div>
 
           <motion.p
             className="hero-subtitle"

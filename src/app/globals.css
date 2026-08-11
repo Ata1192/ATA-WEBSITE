@@ -1406,3 +1406,41 @@ h5 {
     justify-content: center;
   }
 }
+
+/* ============================================
+   TYPEWRITER
+   ============================================ */
+.typewriter-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.typewriter-text {
+  display: inline;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--primary);
+  border-radius: 1px;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ============================================
+   SKELETON PULSE (GitHub stats loading)
+   ============================================ */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+

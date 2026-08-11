@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import GitHubStats from "@/components/GitHubStats";
 
 export default function About() {
   const { t } = useLanguage();
@@ -29,19 +30,22 @@ export default function About() {
         </motion.div>
 
         <div className="about-grid">
-          {/* Left: Text */}
+          {/* Left: Text + GitHub Stats */}
           <motion.div
-            className="about-text"
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <p>{t.about.p1}</p>
-            <p>{t.about.p2}</p>
-            <p>{t.about.p3}</p>
+            <div className="about-text">
+              <p>{t.about.p1}</p>
+              <p>{t.about.p2}</p>
+              <p>{t.about.p3}</p>
+            </div>
+            {/* GitHub canlı istatistikleri */}
+            <GitHubStats inView={inView} />
           </motion.div>
 
-          {/* Right: Stats */}
+          {/* Right: Stat cards */}
           <motion.div
             className="about-stats"
             initial={{ opacity: 0, x: 30 }}
@@ -61,13 +65,12 @@ export default function About() {
               </motion.div>
             ))}
 
-            {/* Extra decorative card */}
             <motion.div
               className="stat-card"
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(124,58,237,0.1), rgba(6,182,212,0.1))",
-                borderColor: "rgba(124,58,237,0.25)",
+                  "linear-gradient(135deg, rgba(203,205,206,0.06), rgba(203,205,206,0.02))",
+                borderColor: "rgba(203,205,206,0.15)",
               }}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
