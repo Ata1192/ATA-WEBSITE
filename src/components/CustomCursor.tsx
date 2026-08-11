@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 
 export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,11 +10,6 @@ export default function CustomCursor() {
   // Raw mouse coordinates
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
-
-  // Smooth springs for the cursor follow effect
-  const springConfig = { damping: 28, stiffness: 800, mass: 0.1 };
-  const smoothX = useSpring(cursorX, springConfig);
-  const smoothY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
     // Only show on desktop devices (non-touch)
@@ -69,8 +64,8 @@ export default function CustomCursor() {
           left: 0,
           width: 32,
           height: 32,
-          x: smoothX,
-          y: smoothY,
+          x: cursorX,
+          y: cursorY,
           translateX: "-50%",
           translateY: "-50%",
           pointerEvents: "none",
