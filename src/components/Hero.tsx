@@ -19,7 +19,7 @@ function AvatarSVG() {
       {/* Code bracket left */}
       <motion.path
         d="M55 90 L35 110 L55 130"
-        stroke="#7c3aed"
+        stroke="#cbcdce"
         strokeWidth="5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -31,7 +31,7 @@ function AvatarSVG() {
       {/* Code bracket right */}
       <motion.path
         d="M165 90 L185 110 L165 130"
-        stroke="#06b6d4"
+        stroke="#9a9c9d"
         strokeWidth="5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -46,7 +46,7 @@ function AvatarSVG() {
         y1="80"
         x2="95"
         y2="140"
-        stroke="#f59e0b"
+        stroke="#e2e4e5"
         strokeWidth="5"
         strokeLinecap="round"
         initial={{ pathLength: 0, opacity: 0 }}
@@ -56,10 +56,10 @@ function AvatarSVG() {
 
       {/* Glowing dots */}
       {[
-        { cx: 68, cy: 60, r: 4, color: "#7c3aed", delay: 0.8 },
-        { cx: 152, cy: 60, r: 4, color: "#06b6d4", delay: 1 },
-        { cx: 68, cy: 160, r: 4, color: "#06b6d4", delay: 1.2 },
-        { cx: 152, cy: 160, r: 4, color: "#7c3aed", delay: 1.4 },
+        { cx: 68, cy: 60, r: 4, color: "#cbcdce", delay: 0.8 },
+        { cx: 152, cy: 60, r: 4, color: "#9a9c9d", delay: 1 },
+        { cx: 68, cy: 160, r: 4, color: "#9a9c9d", delay: 1.2 },
+        { cx: 152, cy: 160, r: 4, color: "#cbcdce", delay: 1.4 },
       ].map((dot, i) => (
         <motion.circle
           key={i}
@@ -87,8 +87,8 @@ function AvatarSVG() {
         width="70"
         height="3"
         rx="1.5"
-        fill="#7c3aed"
-        opacity="0.5"
+        fill="#cbcdce"
+        opacity="0.4"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.8, delay: 1.5 }}
@@ -99,8 +99,8 @@ function AvatarSVG() {
         width="50"
         height="3"
         rx="1.5"
-        fill="#06b6d4"
-        opacity="0.4"
+        fill="#9a9c9d"
+        opacity="0.3"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.8, delay: 1.7 }}

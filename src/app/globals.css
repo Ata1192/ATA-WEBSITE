@@ -1,33 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
 /* ============================================
-   CSS VARIABLES — Aurora Tech Design System
+   CSS VARIABLES — Monochrome Design System
+   Palette: #000000 × #cbcdce
    ============================================ */
 :root {
-  --bg: #07070f;
-  --bg-2: #0d0d1a;
-  --surface: #12121f;
-  --surface-2: #1a1a2e;
-  --border: rgba(124, 58, 237, 0.15);
-  --border-hover: rgba(124, 58, 237, 0.4);
+  --bg: #000000;
+  --bg-2: #0a0a0a;
+  --surface: #111111;
+  --surface-2: #1c1c1c;
+  --border: rgba(203, 205, 206, 0.1);
+  --border-hover: rgba(203, 205, 206, 0.35);
 
-  --primary: #7c3aed;
-  --primary-light: #9d62f5;
-  --primary-glow: rgba(124, 58, 237, 0.3);
+  --primary: #cbcdce;
+  --primary-light: #e2e4e5;
+  --primary-glow: rgba(203, 205, 206, 0.12);
 
-  --cyan: #06b6d4;
-  --cyan-light: #22d3ee;
-  --cyan-glow: rgba(6, 182, 212, 0.25);
+  --cyan: #9a9c9d;
+  --cyan-light: #cbcdce;
+  --cyan-glow: rgba(203, 205, 206, 0.08);
 
-  --accent: #f59e0b;
-  --accent-glow: rgba(245, 158, 11, 0.25);
+  --accent: #ffffff;
+  --accent-glow: rgba(255, 255, 255, 0.1);
 
-  --green: #10b981;
-  --green-glow: rgba(16, 185, 129, 0.2);
+  --green: #cbcdce;
+  --green-glow: rgba(203, 205, 206, 0.12);
 
-  --text: #f1f5f9;
-  --text-muted: #94a3b8;
-  --text-dim: #475569;
+  --text: #f0f1f2;
+  --text-muted: #8a8c8d;
+  --text-dim: #454748;
 
   --font-heading: "JetBrains Mono", monospace;
   --font-body: "JetBrains Mono", monospace;
@@ -37,8 +38,8 @@
   --radius-lg: 20px;
   --radius-xl: 28px;
 
-  --shadow-primary: 0 0 30px rgba(124, 58, 237, 0.2);
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-primary: 0 0 30px rgba(203, 205, 206, 0.08);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.6);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
