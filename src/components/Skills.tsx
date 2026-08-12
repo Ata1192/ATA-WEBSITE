@@ -63,7 +63,12 @@ export default function Skills() {
                     type: "spring",
                     stiffness: 200,
                   }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    borderColor: skill.color || "var(--border-hover)",
+                    boxShadow: `0 8px 24px ${skill.color ? skill.color + "33" : "rgba(124, 58, 237, 0.15)"}`,
+                    color: skill.color || "var(--text)"
+                  }}
                 >
                   <span className="skill-chip-icon">{skill.icon}</span>
                   {skill.name}
