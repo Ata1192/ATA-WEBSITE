@@ -54,7 +54,6 @@ export default function Skills() {
               {cat.items.map((skill, i) => (
                 <motion.div
                   key={skill.name}
-                  className="skill-chip"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
                   transition={{
@@ -63,18 +62,22 @@ export default function Skills() {
                     type: "spring",
                     stiffness: 200,
                   }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    y: -3,
-                    borderColor: skill.color || "var(--border-hover)",
-                    backgroundColor: "var(--surface-2)",
-                    boxShadow: `0 8px 24px ${skill.color ? skill.color + "33" : "rgba(124, 58, 237, 0.15)"}`,
-                    color: skill.color || "var(--text)",
-                    transition: { duration: 0.2, delay: 0 }
-                  }}
                 >
-                  <span className="skill-chip-icon">{skill.icon}</span>
-                  {skill.name}
+                  <motion.div
+                    className="skill-chip"
+                    whileHover={{ 
+                      scale: 1.05,
+                      y: -3,
+                      borderColor: skill.color || "var(--border-hover)",
+                      backgroundColor: "var(--surface-2)",
+                      boxShadow: `0 8px 24px ${skill.color ? skill.color + "33" : "rgba(124, 58, 237, 0.15)"}`,
+                      color: skill.color || "var(--text)",
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <span className="skill-chip-icon">{skill.icon}</span>
+                    {skill.name}
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
