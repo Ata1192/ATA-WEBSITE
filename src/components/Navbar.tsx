@@ -36,7 +36,7 @@ export default function Navbar() {
         <div className="container navbar-inner">
           <Magnetic amount={0.15}>
             <button className="navbar-logo" onClick={() => scrollTo("hero")}>
-              AM
+              {"<Ata />"}
             </button>
           </Magnetic>
 

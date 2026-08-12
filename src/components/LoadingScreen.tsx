@@ -73,7 +73,7 @@ export default function LoadingScreen() {
               }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              AM
+              {"<Ata />"}
             </motion.span>
 
             <motion.span
