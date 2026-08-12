@@ -17,7 +17,7 @@ export const translations = {
         "Yazılım geliştirme tutkusu olan, .NET, React ve modern web teknolojilerine hâkim bir 4. sınıf öğrencisiyim. Şu an stajımı tamamlıyorum ve yeni projeler üretiyorum.",
       cta_projects: "Projelerimi Gör",
       cta_contact: "İletişime Geç",
-      open_to: "Fırsatlara Açık",
+      open_to: "İş Tekliflerine Açık",
     },
     about: {
       title: "Hakkımda",
@@ -69,7 +69,7 @@ export const translations = {
       copy_email: "E-postayı Kopyala",
       copied: "Kopyalandı!",
       find_me: "Beni Bul",
-      open_to_work: "Fırsatlara Açık",
+      open_to_work: "İş Tekliflerine Açık",
       open_to_work_desc:
         "Staj, part-time veya mezuniyet sonrası pozisyonlara açığım.",
     },

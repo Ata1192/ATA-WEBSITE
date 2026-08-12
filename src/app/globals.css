@@ -309,7 +309,7 @@ h5 {
 
 .lang-btn.active {
   background: var(--primary);
-  color: white;
+  color: #000000;
 }
 
 .hamburger {
