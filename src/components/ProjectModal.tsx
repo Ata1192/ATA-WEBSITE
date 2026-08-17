@@ -176,6 +176,7 @@ export default function ProjectModal({ project, onClose }: ModalProps) {
             }}
           >
             <div
+              data-lenis-prevent="true"
               onClick={(e) => e.stopPropagation()}
               style={{
                 pointerEvents: "all",
@@ -287,6 +288,45 @@ export default function ProjectModal({ project, onClose }: ModalProps) {
                 >
                   {description}
                 </p>
+
+                {/* Screenshots */}
+                {project.screenshots && project.screenshots.length > 0 && (
+                  <div style={{ marginBottom: "32px" }}>
+                    <h4
+                      style={{
+                        marginBottom: "16px",
+                        color: "var(--text)",
+                        fontSize: "1.1rem",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {language === "tr" ? "Ekran Görüntüleri" : "Screenshots"}
+                    </h4>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "16px",
+                      }}
+                    >
+                      {project.screenshots.map((src, idx) => (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          key={idx}
+                          src={src}
+                          alt={`${title} screenshot ${idx + 1}`}
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                            borderRadius: "var(--radius-lg)",
+                            border: "1px solid var(--border)",
+                            objectFit: "cover",
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Tech badges */}
                 <div

@@ -10,6 +10,8 @@ export interface Project {
   thumbnail?: string;
   /** Video URL — supports mp4 files OR YouTube links */
   video?: string;
+  /** Array of screenshot URLs to show in the modal */
+  screenshots?: string[];
   featured?: boolean;
 }
 

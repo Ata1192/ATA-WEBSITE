@@ -941,9 +941,9 @@ h5 {
 
 .project-card-new:hover {
   border-color: var(--border-hover);
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-  z-index: 10;
+  transform: translateY(-8px) scale(1.4);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+  z-index: 50;
 }
 
 /* Thumbnail area — 16:9 */
