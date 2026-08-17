@@ -71,4 +71,66 @@ Orbitie LogMetrics acts as a smart assistant that turns chaos into automation, r
     featured: true,
     video: "/projects/orbitie-log-analyzer/demo.mp4",
   },
+  {
+    id: 2,
+    title: {
+      tr: "Local RAG Assistant",
+      en: "Local RAG Assistant",
+    },
+    description: {
+      tr: "Kurumsal veri gizliliğini koruyan, tamamen çevrimdışı çalışan yerel bir Yapay Zeka (AI) Asistanı. Python ve Streamlit ile geliştirilmiş olup, RAG mimarisiyle PDF/Docx belgelerini analiz edip soruları yanıtlar.",
+      en: "A fully offline Local AI Assistant that ensures corporate data privacy. Built with Python and Streamlit, it uses RAG architecture to analyze PDF/Docx documents and answer questions.",
+    },
+    longDescription: {
+      tr: `Proje Hakkında
+Tamamen çevrimdışı (internet bağlantısı gerektirmeden) çalışan, şirket içi dokümanları ve verileri analiz edip soruları yanıtlayan bir Retrieval-Augmented Generation (RAG) asistanı.
+
+Öne Çıkan Özellikler:
+🧠 Yerel LLM Entegrasyonu: Microsoft Foundry Local SDK kullanılarak Qwen3-embedding ve Qwen2.5-1.5b modelleri entegre edildi. Hiçbir veri dışarı aktarılmadığı için %100 gizlilik sağlanır.
+📄 Akıllı Doküman Analizi: Sürükle-bırak yöntemiyle PDF, Word (docx) veya CSV dosyaları sisteme yüklenir. Özel bir algoritma, belgeleri anlamsal (semantic) bağlamını koparmadan küçük parçalara (chunk) böler.
+🔍 Vektör Arama: Metin parçaları sayısal vektörlere dönüştürülüp yerel SQLite veritabanına işlenir. Kullanıcı bir soru sorduğunda, "Kosinüs Benzerliği" (Cosine Similarity) kullanılarak en alakalı bilgiler saniyeler içinde taranıp yapay zekaya bağlam olarak sunulur.
+💬 Çoklu Sohbet Oturumları: Tıpkı ChatGPT gibi kullanıcıların birden fazla sohbet açabildiği, eski mesaj geçmişini görebildiği ve cevapların hafızada tutulduğu modern bir arayüz.`,
+      en: `About the Project
+A completely offline Retrieval-Augmented Generation (RAG) assistant that analyzes internal corporate documents and answers queries without requiring internet access.
+
+Key Features:
+🧠 Local LLM Integration: Built utilizing the Microsoft Foundry Local SDK to run Qwen3-embedding and Qwen2.5-1.5b models locally, ensuring 100% data privacy since no data leaves the system.
+📄 Smart Document Analysis: Users can drag and drop PDF, Word (docx), or CSV files via the UI. A custom algorithm divides the documents into smaller semantic chunks while preserving their context.
+🔍 Vector Search: The text chunks are embedded into numerical vectors and stored in a local SQLite database. When a query is made, "Cosine Similarity" is used to rapidly scan and fetch the most relevant context for the AI.
+💬 Multi-Chat Sessions: A modern interface that supports multiple independent chat threads, persistent chat history, and contextual memory, similar to industry-standard AI assistants.`,
+    },
+    technologies: ["Python", "Streamlit", "Local LLM", "RAG", "Qwen", "SQLite", "PyPDF2"],
+    featured: true,
+  },
+  {
+    id: 3,
+    title: {
+      tr: "Orbitie Deployment Installer",
+      en: "Orbitie Deployment Installer",
+    },
+    description: {
+      tr: "Şirketin ana ERP ürününün müşteri sunucularına kurulum sürecini tamamen otomatikleştiren kapsamlı bir yükleyici (Installer) yazılımı. Inno Setup ve C# .NET kullanılarak geliştirilmiştir.",
+      en: "A comprehensive installer application that fully automates the deployment process of the company's main ERP product to customer servers. Built using Inno Setup and C# .NET.",
+    },
+    longDescription: {
+      tr: `Proje Hakkında
+Teknik destek ekibinin manuel olarak yürüttüğü şirket ürününün müşterilere kurulum ve yapılandırma sürecini hızlandırmak ve otomatikleştirmek amacıyla geliştirilen akıllı bir "Installer" projesidir.
+
+Öne Çıkan Özellikler:
+⚙️ Otomatik Sistem Konfigürasyonu: C# tabanlı bir arkaplan asistanı (InstallerHelper) sayesinde kurulum esnasında web.config şifrelemeleri ve connection string yapılandırmaları otomatik yönetilir.
+🌐 IIS & Ortam Kurulumu: Sunucuda eksik olan IIS, ASP.NET bileşenleri DISM aracıyla komut satırından otomatik aktif edilir. Yeni bir IIS App Pool ve Website saniyeler içinde yayına alınır.
+💾 Veritabanı Yönetimi: Kullanıcıya arayüz üzerinden sıfırdan bir veritabanı oluşturma veya mevcut bir veritabanına bağlanıp bağlantıyı test etme imkanı sunar.
+🛡️ Yedekleme ve Güncelleme: Sıfırdan kurulumun yanı sıra "Mevcut Kurulumu Güncelle" ve "Veritabanını Yedekle" (Backup) özellikleriyle tüm bakım sürecini tek tıkla çözer.`,
+      en: `About the Project
+A smart "Installer" project developed to automate and accelerate the deployment and configuration process of the company's product, which was previously handled manually by the technical support team.
+
+Key Features:
+⚙️ Automated System Configuration: A C#-based background helper (InstallerHelper) manages web.config encryptions and connection string configurations on the fly during installation.
+🌐 IIS & Environment Setup: Automatically enables missing server features like IIS and ASP.NET components via the DISM command-line tool. Seamlessly provisions a new IIS App Pool and Website.
+💾 Database Management: Allows users to securely input database credentials through a custom Pascal Script UI. It can either connect and test an existing database or create a brand new one with proper attributes directly from the installer.
+🛡️ Backup & Update: In addition to fresh installations, it provides one-click "Update Existing Installation" and "Backup Database" functionalities to streamline the entire maintenance lifecycle.`,
+    },
+    technologies: ["C#", ".NET Core", "Inno Setup", "Pascal Script", "IIS", "Windows Server"],
+    featured: false,
+  }
 ];
