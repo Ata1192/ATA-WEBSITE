@@ -58,6 +58,9 @@ export default function LoadingScreen() {
           >
             <motion.span
               style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 fontFamily: "JetBrains Mono, monospace",
                 fontSize: "clamp(4rem, 12vw, 7rem)",
                 fontWeight: 700,
@@ -73,7 +76,6 @@ export default function LoadingScreen() {
                 ],
               }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
             >
               <Hexagon size={100} strokeWidth={1} />
             </motion.span>
