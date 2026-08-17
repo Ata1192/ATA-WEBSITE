@@ -109,24 +109,28 @@ function ProjectCard({
 
   return (
     <motion.div
-      className="project-card-new"
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: 0.1 * index }}
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-      aria-label={`Open ${title}`}
-      onKeyDown={(e) => e.key === "Enter" && onClick()}
-      onMouseEnter={() => videoRef.current?.play().catch(() => {})}
-      onMouseLeave={() => {
-        if (videoRef.current) {
-          videoRef.current.pause();
-          videoRef.current.currentTime = 0;
-        }
-      }}
+      style={{ display: "flex" }}
     >
-      {/* Thumbnail */}
+      <div
+        className="project-card-new"
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
+        aria-label={`Open ${title}`}
+        onKeyDown={(e) => e.key === "Enter" && onClick()}
+        onMouseEnter={() => videoRef.current?.play().catch(() => {})}
+        onMouseLeave={() => {
+          if (videoRef.current) {
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0;
+          }
+        }}
+        style={{ width: "100%" }}
+      >
+        {/* Thumbnail */}
       <div className="project-card-thumbnail">
         <CardThumbnail project={project} title={title} videoRef={videoRef} />
         {project.featured && (
@@ -149,6 +153,7 @@ function ProjectCard({
               +{project.technologies.length - 4}
             </span>
           )}
+        </div>
         </div>
       </div>
     </motion.div>
