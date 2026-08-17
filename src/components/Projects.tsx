@@ -6,24 +6,6 @@ import { useLanguage } from "@/context/LanguageContext";
 import { projects, Project } from "@/data/projects";
 import ProjectModal from "@/components/ProjectModal";
 
-// ── Highlight overlay ────────────────────────────────────────────
-function HighlightOverlay() {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        inset: 0,
-        background: "rgba(255,255,255,0.05)",
-        opacity: 0,
-        transition: "opacity 0.3s ease",
-        pointerEvents: "none",
-        zIndex: 1,
-      }}
-      className="highlight-overlay"
-    />
-  );
-}
-
 // ── Thumbnail (card top) ─────────────────────────────────────────
 function CardThumbnail({ project, title, videoRef }: { project: Project; title: string; videoRef?: React.RefObject<HTMLVideoElement | null> }) {
   if (project.video || project.thumbnail) {
@@ -53,7 +35,6 @@ function CardThumbnail({ project, title, videoRef }: { project: Project; title: 
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         )}
-        <HighlightOverlay />
       </>
     );
   }
@@ -102,7 +83,6 @@ function CardThumbnail({ project, title, videoRef }: { project: Project; title: 
       >
         Click for details
       </span>
-      <PlayOverlay />
     </div>
   );
 }

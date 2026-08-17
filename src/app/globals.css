@@ -945,10 +945,6 @@ h5 {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.project-card-new:hover .highlight-overlay {
-  opacity: 1 !important;
-}
-
 /* Thumbnail area — 16:9 */
 .project-card-thumbnail {
   width: 100%;
@@ -957,6 +953,16 @@ h5 {
   position: relative;
   background: var(--bg);
   flex-shrink: 0;
+}
+
+.project-card-thumbnail video,
+.project-card-thumbnail img {
+  transition: transform 0.4s ease;
+}
+
+.project-card-new:hover .project-card-thumbnail video,
+.project-card-new:hover .project-card-thumbnail img {
+  transform: scale(1.08);
 }
 
 .project-featured-pill {
