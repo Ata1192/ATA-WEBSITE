@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Hexagon } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import Magnetic from "@/components/Magnetic";
 
@@ -35,8 +35,8 @@ export default function Navbar() {
       <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
         <div className="container navbar-inner">
           <Magnetic amount={0.15}>
-            <button className="navbar-logo" onClick={() => scrollTo("hero")} style={{ display: 'flex', alignItems: 'center' }}>
-              <Hexagon size={28} strokeWidth={1.5} />
+            <button className="navbar-logo" onClick={() => scrollTo("hero")}>
+              ata.
             </button>
           </Magnetic>
 

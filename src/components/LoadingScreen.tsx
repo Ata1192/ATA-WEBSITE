@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Hexagon } from "lucide-react";
 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
@@ -77,7 +76,7 @@ export default function LoadingScreen() {
               }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <Hexagon size={100} strokeWidth={1} />
+              ata.
             </motion.span>
 
             <motion.span
