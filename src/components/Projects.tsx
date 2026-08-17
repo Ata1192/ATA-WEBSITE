@@ -6,41 +6,21 @@ import { useLanguage } from "@/context/LanguageContext";
 import { projects, Project } from "@/data/projects";
 import ProjectModal from "@/components/ProjectModal";
 
-// ── Play icon overlay ────────────────────────────────────────────
-function PlayOverlay() {
+// ── Highlight overlay ────────────────────────────────────────────
+function HighlightOverlay() {
   return (
     <div
       style={{
         position: "absolute",
         inset: 0,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "rgba(0,0,0,0.35)",
+        background: "rgba(255,255,255,0.05)",
         opacity: 0,
-        transition: "opacity 0.25s ease",
+        transition: "opacity 0.3s ease",
+        pointerEvents: "none",
+        zIndex: 1,
       }}
-      className="play-overlay"
-    >
-      <div
-        style={{
-          width: "52px",
-          height: "52px",
-          borderRadius: "50%",
-          background: "rgba(255,255,255,0.15)",
-          border: "2px solid rgba(255,255,255,0.5)",
-          backdropFilter: "blur(8px)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {/* Triangle play icon */}
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-          <polygon points="5,3 19,12 5,21" />
-        </svg>
-      </div>
-    </div>
+      className="highlight-overlay"
+    />
   );
 }
 
@@ -73,7 +53,7 @@ function CardThumbnail({ project, title, videoRef }: { project: Project; title: 
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
         )}
-        <PlayOverlay />
+        <HighlightOverlay />
       </>
     );
   }

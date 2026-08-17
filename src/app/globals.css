@@ -945,7 +945,7 @@ h5 {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.project-card-new:hover .play-overlay {
+.project-card-new:hover .highlight-overlay {
   opacity: 1 !important;
 }
 
