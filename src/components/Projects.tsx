@@ -45,7 +45,7 @@ function PlayOverlay() {
 }
 
 // ── Thumbnail (card top) ─────────────────────────────────────────
-function CardThumbnail({ project, title }: { project: Project; title: string }) {
+function CardThumbnail({ project, title, videoRef }: { project: Project; title: string; videoRef?: React.RefObject<HTMLVideoElement | null> }) {
   if (project.video || project.thumbnail) {
     return (
       <>
@@ -64,8 +64,10 @@ function CardThumbnail({ project, title }: { project: Project; title: string }) 
         ) : (
           // Video — show first frame (muted, paused)
           <video
+            ref={videoRef}
             src={project.video}
             muted
+            loop
             playsInline
             preload="metadata"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
@@ -138,6 +140,8 @@ function ProjectCard({
   onClick: () => void;
 }) {
   const { language } = useLanguage();
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  
   const title =
     language === "tr" ? project.title.tr : project.title.en;
   const description =
@@ -154,10 +158,17 @@ function ProjectCard({
       tabIndex={0}
       aria-label={`Open ${title}`}
       onKeyDown={(e) => e.key === "Enter" && onClick()}
+      onMouseEnter={() => videoRef.current?.play().catch(() => {})}
+      onMouseLeave={() => {
+        if (videoRef.current) {
+          videoRef.current.pause();
+          videoRef.current.currentTime = 0;
+        }
+      }}
     >
       {/* Thumbnail */}
       <div className="project-card-thumbnail">
-        <CardThumbnail project={project} title={title} />
+        <CardThumbnail project={project} title={title} videoRef={videoRef} />
         {project.featured && (
           <span className="project-featured-pill">⭐ Featured</span>
         )}

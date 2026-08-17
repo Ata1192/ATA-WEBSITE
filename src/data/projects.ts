@@ -67,6 +67,6 @@ Orbitie LogMetrics acts as a smart assistant that turns chaos into automation, r
     },
     technologies: ["React", "Vite", "C#", ".NET 10", "SQLite", "Groq AI", "LLM", "SMTP"],
     featured: true,
-    video: "/projects/Orbitie Log Analyzer/Loganalyzer(1).mp4",
+    video: "/projects/orbitie-log-analyzer/demo.mp4",
   },
 ];
